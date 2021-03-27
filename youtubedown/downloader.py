@@ -3,14 +3,14 @@ from youtubedown.module1 import asyncmodule
 
 
 class asyncDown():
-    def __init__(self, title: str, nick:str, check):
+    def __init__(self, title: str, path:str, check):
         self.title = title
         self.check = check
-        self.nick = nick
+        self.path = path
 
-    async def lookup(nick: str=None , title: str=None):
-        if not nick: 
-            nick = "music"
+    async def lookup(path: str=None , title: str=None):
+        if not path: 
+            path = "music"
         else:
             pass
         URL_REGEX = re.compile(
@@ -21,15 +21,14 @@ class asyncDown():
             title_url= True
         else:
             title_url = False
-        print(title_url)
-        return asyncDown(title=title, check=title_url, nick=nick)
+        return asyncDown(title=title, check=title_url, path=path)
     async def download(self):
         if self.check is None: return {"result": None}
         if self.check is True:
-            result = await asyncmodule.urldown(self, nick=self.nick, title=self.title)
+            result = await asyncmodule.urldown(self, nick=self.path, title=self.title)
             return result
         if self.check is False:
-            result = await result.titledown(self, nick=self.nick, title=self.title)
+            result = await asyncmodule.titledown(self, nick=self.path, title=self.title)
             return result
     async def serach(self):
         if self.check is None: return {"result": None}
