@@ -3,7 +3,9 @@
 
 ![PYTHON](https://img.shields.io/badge/python-v3.8-blue)
 > Asynchronous download using a simple created youtube_dl.
+
 > Required: ffmpeg
+
 > testing python version 3.8
 
 
