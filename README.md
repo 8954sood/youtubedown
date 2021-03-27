@@ -11,11 +11,11 @@
 ## Asynchronous
 ```py
 import asyncio
-from youtubedown import asyncdown
+from youtubedown import asyncDown
 
 
 async def main():
-    Main = await asyncdown.lookup(title="My Songs title or url", nick="music")
+    Main = await asyncDown.lookup(title="My Songs title or url", nick="music")
     download = await Main.download() #return json and install mp3 file
     search = await Main.search() #retrun json
 
