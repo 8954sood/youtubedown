@@ -16,7 +16,7 @@ from youtubedown import asyncdown
 
 async def main():
     Main = await asyncdown.lookup(title="My Songs title or url", nick="music")
-    download = await Main.download() #return json
+    download = await Main.download() #return json and install mp3 file
     search = await Main.search() #retrun json
 
 asyncio.run(main())
