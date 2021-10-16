@@ -17,9 +17,8 @@ from youtubedown import asyncDown
 
 
 async def main():
-    Main = await asyncDown.lookup(title="My Songs title or url", path="./music/music") # path = music polder in music.mp3
+    Main = await asyncDown.lookup(title="My Songs title or url", path="./music_folder/music", format="mp3") # path = music_folder in music.mp3
     download = await Main.download() #return json and install mp3 file
-    search = await Main.search() #retrun json
 
 asyncio.run(main())
 ```

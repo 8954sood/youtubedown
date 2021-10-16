@@ -42,7 +42,7 @@ class asyncmodule():
             
         try:
             with YoutubeDL(YDL_OPTIONS) as ytdl:
-                data = await loop.run_in_executor(None, lambda: ytdl.extract_info(self.kwargs['title'], download=True))
+                data = await loop.run_in_executor(None, lambda: ytdl.extract_info(self.kwargs['title'], download=self.kwargs['down']))
         except (youtube_dl.utils.ExtractorError, youtube_dl.utils.DownloadError):
             return {"result": False, "json_result": False}
         try:
@@ -68,7 +68,7 @@ class asyncmodule():
             YDL_OPTIONS = self.kwargs['option']
         try:
             with YoutubeDL(YDL_OPTIONS) as ytdl:
-                data = await loop.run_in_executor(None, lambda: ytdl.extract_info("ytsearch:{0}".format(self.kwargs['title']), download=True))
+                data = await loop.run_in_executor(None, lambda: ytdl.extract_info("ytsearch:{0}".format(self.kwargs['title']), download=self.kwargs['down']))
         except (youtube_dl.utils.ExtractorError, youtube_dl.utils.DownloadError):
             return {"result": False, "json_result": False}
         try:
@@ -80,3 +80,4 @@ class asyncmodule():
             return data
         except:
             return {"result": True, "json_result": False}
+    

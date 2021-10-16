@@ -37,19 +37,21 @@ class asyncDown():
         return asyncDown(kwargs)
     async def download(self):
         if self.check is None: return {"result": None}
+        self.kwargs['down'] = True
+        module = asyncmodule(self.kwargs)
         if self.check is True:
-            module = asyncmodule(self.kwargs)
             result = await asyncmodule.urldown(self)
             return result
         if self.check is False:
-            module = asyncmodule(self.kwargs)
             result = await asyncmodule.titledown(self)
             return result
-    # async def search(self):
-    #     if self.check is None: return {"result": None}
-    #     if self.check is True:
-    #         result = await asyncmodule.urlsearch(self, title=self.title)
-    #         return result
-    #     if self.check is False:
-    #         result = await asyncmodule.titleserach(self, title=self.title)
-    #         return result
+    async def search(self):
+        if self.check is None: return {"result": None}
+        self.kwargs['down'] = False
+        module = asyncmodule(self.kwargs)
+        if self.check is True:
+            result = await asyncmodule.urldown(self)
+            return result
+        if self.check is False:
+            result = await asyncmodule.titledown(self)
+            return result
